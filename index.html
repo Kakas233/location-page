@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Location</title>
+    <style>
+        body {
+            background-color: #f0c0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #location-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <div id="location-display">Determining your location...</div>
+
+    <script>
+        fetch('https://ipinfo.io/json?token=e7740ba0b20f7f')
+            .then(response => response.json())
+            .then(data => {
+                const location = data.city;
+                document.getElementById('location-display').textContent = `Zoe💕 is in ${location} too!`;
+            })
+            .catch(error => {
+                document.getElementById('location-display').textContent = 'Could not determine location';
+            });
+    </script>
+</body>
+</html>
